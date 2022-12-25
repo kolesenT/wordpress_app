@@ -1,5 +1,6 @@
 <?php
 
+add_action('init', 'register_events_post_type');
 add_action('wp_enqueue_scripts', 'add_stylesheet');
 add_action( 'after_setup_theme', 'bootstrap_setup' );
 add_filter('show_admin_bar', '__return_false');
@@ -45,7 +46,38 @@ function register_widgets(){
                      ]);
 }
 
+function register_events_post_type():void
+{
+    register_post_type('event', [
+        'label' => 'Events',
+        'labels' => [
+            'name' => 'Events',
+            'singular_name' => 'event',
+            'add_new' => 'add new event',
 
+        ],
+        'public' => true,
+        'rewrite' => ['slug' => 'events'],
+        'has_archive' => true,
+        'show_in_rest' => true,
+        'supports' => ['title', 'editor', 'thumbnail', 'comments'],
+        'menu_icon' => 'dashicons-smiley',
+    ]);
+
+    register_taxonomy('event_category', ['event'], [
+        'labels' => [
+            'name' => 'Event Category',
+            'singular_name' => 'event category',
+            'add_new' => 'add new event category',
+        ],
+        'hierarchical' => false,
+        'show_ui' => true,
+        'show_in_rest' => true,
+        'show_admin_column' => true,
+        'query_var' => true,
+        'rewrite' => ['slug' => 'event category'],
+    ]);
+}
 
 
 
