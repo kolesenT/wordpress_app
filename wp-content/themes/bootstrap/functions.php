@@ -75,7 +75,7 @@ function register_events_post_type():void
         'show_in_rest' => true,
         'show_admin_column' => true,
         'query_var' => true,
-        'rewrite' => ['slug' => 'event category'],
+        'rewrite' => ['slug' => 'event-category'],
     ]);
 }
 

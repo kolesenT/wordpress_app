@@ -7,7 +7,7 @@
     <?php
     while (have_posts()){
         the_post();
-        get_template_part('template-parts/movie/excerpt');
+        get_template_part('template-parts/event/excerpt');
     }
     ?>
 <?php else: ?>
